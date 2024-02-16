@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/helious/seat-beacons.svg?style=flat-square)](https://packagist.org/packages/helious/seat-beacons)
 
 Notifications plugin for [SeAT](https://github.com/eveseat/seat) and basically employs that pulls notifications for characters of a specified corporation and sends them to a discord channel about about things such as SOV, Citadel Events (Anchoring, Under Attack, etc.). 
-<br />
+<br><br>
 Why not use SeATS built in notifications?
 because it only grabs notifications once every 20min and sends multiple webhook messages for the same notification. This plugin will grab notifications every 2min (if you change the schedule) and only send one webhook message per notification.
 
