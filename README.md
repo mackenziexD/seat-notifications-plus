@@ -1,4 +1,4 @@
-# SeAT-Notifcations - notifcation to discord relay plugin for SeAT
+# SeAT-Notifcations
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/helious/seat-beacons.svg?style=flat-square)](https://packagist.org/packages/helious/seat-beacons)
 [![Total Downloads](https://img.shields.io/packagist/dt/helious/seat-beacons.svg?style=flat-square)](https://packagist.org/packages/helious/seat-beacons)
