@@ -1,0 +1,31 @@
+{
+    "name": "helious/seat-notifications",
+    "type": "library",
+    "keywords": [
+        "helious",
+        "seat-notifications"
+    ],
+    "authors": [
+        {
+            "name": "Helious",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Helious\\SeatNotifications\\": "src/"
+        }
+    },
+    "require": {
+        "laravel/framework": "^10.0",
+        "eveseat/web": "^5.0",
+        "eveseat/eveapi": "^5.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Helious\\SeatNotifications\\NotificationsServiceProvider"
+            ]
+        }
+    }
+}
