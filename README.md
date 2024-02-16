@@ -7,7 +7,7 @@ Notifications plugin for [SeAT](https://github.com/eveseat/seat) and basically e
 
 ![https://i.imgur.com/UtfvJ0B.png](https://i.imgur.com/UtfvJ0B.png)
 
-## Why not use SeATS built in notifications?
+## Why not use SeAT's built in notifications?
 because it only grabs notifications once every 20min and sends multiple webhook messages for the same notification. This plugin will grab notifications every 2min (if you change the schedule) and only send one webhook message per notification.
 
 
