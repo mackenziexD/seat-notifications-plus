@@ -19,9 +19,6 @@ You can install the package via composer:
 composer require helious/seat-notifications
 ```
 
-## Permissions
-- Remember to give Roles the `Access Notifications` role under Seat-beacons
-
 ## Notifications
 1. 
 
