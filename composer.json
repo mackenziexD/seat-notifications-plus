@@ -1,9 +1,9 @@
 {
-    "name": "helious/seat-notifications",
+    "name": "helious/seat-notifications-plus",
     "type": "library",
     "keywords": [
         "helious",
-        "seat-notifications"
+        "seat-notifications-plus"
     ],
     "authors": [
         {

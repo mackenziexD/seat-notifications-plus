@@ -56,7 +56,7 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
      */
     public function getName(): string
     {
-        return 'SeAT Notifications';
+        return 'SeAT Notifications+';
     }
 
     /**
@@ -80,7 +80,7 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
      */
     public function getPackagistPackageName(): string
     {
-        return 'seat-notifications';
+        return 'seat-notifications-plus';
     }
 
     /**
