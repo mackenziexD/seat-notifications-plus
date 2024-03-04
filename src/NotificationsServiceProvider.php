@@ -17,8 +17,8 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications.php', 'seat-notifications');
-        $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications.sidebar.php', 'package.sidebar.tools.entries');
+        $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications-plus.php', 'seat-notifications');
+        $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications-plus.sidebar.php', 'package.sidebar');
 
         $this->mergeConfigFrom(
             __DIR__ . '/Config/notifications.alerts.php', 'notifications.alerts'
