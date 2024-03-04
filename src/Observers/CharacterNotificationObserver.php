@@ -5,11 +5,17 @@ namespace Helious\SeatNotificationsPlus\Observers;
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Notifications\Models\NotificationGroup;
 use Helious\SeatNotificationsPlus\Models\SeatNotificationsPlus;
+use Seat\Notifications\Traits\NotificationDispatchTool;
 
 class CharacterNotificationObserver
 {
+    use NotificationDispatchTool;
+
     public function created(CharacterNotification $notification)
     {
+        logger()->debug(
+            sprintf('[Notifications][%d] Character Notification - Queuing job due to registered in-game notification.', $notification->notification_id),
+            $notification->toArray());
         $this->dispatch($notification);
     }
 
@@ -48,6 +54,10 @@ class CharacterNotificationObserver
             $this->dispatchNotifications($notification->type . '[N+]', $groups, function ($notificationClass) use ($notification) {
                 return new $notificationClass($notification);
             });
+        } else {
+            // If the notification is not new, do not dispatch the notifications
+            \Log::debug('Notification is not new, not dispatching');
+            return;
         }
     }
     
