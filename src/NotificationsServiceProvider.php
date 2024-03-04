@@ -6,6 +6,7 @@ use Seat\Services\AbstractSeatPlugin;
 use Illuminate\Console\Scheduling\Schedule;
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Helious\SeatNotificationsPlus\Observers\CharacterNotificationObserver;
+use Helious\SeatNotificationsPlus\Console\TestObs;
 
 class NotificationsServiceProvider extends AbstractSeatPlugin
 {
@@ -35,6 +36,8 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
     public function boot()
     {
 
+        $this->addCommands();
+
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'seat-beacons');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
@@ -42,6 +45,15 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
         CharacterNotification::observe(CharacterNotificationObserver::class);
 
     }
+
+    
+    private function addCommands() 
+    {
+        $this->commands([
+            TestObs::class,
+        ]);
+    }
+
 
     /**
      * Get the package's routes.

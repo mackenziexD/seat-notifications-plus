@@ -14,6 +14,7 @@ use Seat\Eveapi\Models\Sde\MapDenormalize;
 use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Planet;
+use Seat\Eveapi\Models\Sde\Region;
 
 /**
  * Class StructureUnderAttack.
@@ -33,31 +34,27 @@ class MoonMiningExtractionStarted extends AbstractDiscordNotification
     public function populateMessage(DiscordMessage $message, $notifiable)
     {
         $message->embed(function (DiscordEmbed $embed) {
-            $corpName = $this->notification->recipient->corporation->name;
-            $corpID = $this->notification->recipient->corporation->corporation_id;
-            $system = MapDenormalize::find($this->notification->text['solarsystemID']);
-            $region = MapDenormalize::find($system->regionID)->region->name;
+            $corpName = $this->notification->recipient->affiliation->corporation->name;
+            $corpID = $this->notification->recipient->affiliation->corporation_id;
+            $system = MapDenormalize::find($this->notification->text['solarSystemID']);
+            $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['structureTypeID']);
             $planet = MapDenormalize::find($this->notification->text['moonID']);
             $structureName = $this->notification->text['structureName'];
-            $char = UniverseName::firstOrNew(
-                ['entity_id' => $this->notification->text['startedBy']],
-                ['name' => trans('web::seat.unknown')]
-            );
             $readyAt = $this->ldapToDateTime($this->notification->text['readyTime']);
             $autoFrac = $this->ldapToDateTime($this->notification->text['autoTime']);
 
-            $description = "A moon mining extraction has been started for **{$structureName}** at {$planet} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) Extraction was started by ${$char->name}. the chuck will be ready on location at ${$readyAt} and will be automatically fractured at ${$autoFrac}, and will auto fracture on ${$autoFrac}.\n\n";
+            $description = "A moon mining extraction has been started for **{$structureName}** at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}). the chuck will be ready on location at {$readyAt}, and will auto fracture on {$autoFrac}.\n\n";
             
             foreach($this->notification->text['oreVolumeByType'] as $typeID => $volume) {
-                $type = InvType::find($typeID);
-                $description .= "- {$type->typeName}: {number_format($volume, 2)} m³\n";
+                $type2 = InvType::find($typeID);
+                $description .= "- {$type2->typeName}: ".number_format($volume, 2)." m³\n";
             }
 
             $embed->color(DiscordMessage::INFO);
-            $embed->author('{$corpName}', 'https://images.evetech.net/corporations/{$corpID}/logo?size=128');
+            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
+            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->title('Moon Mining Extraction Started');
-            $embed->thumb('https://images.evetech.net/types/{$type->typeID}/icon?size=128');
             $embed->description($description);
             $embed->timestamp($this->notification->timestamp);
         });

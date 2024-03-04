@@ -1,25 +1,5 @@
 <?php
 
-/*
- * This file is part of SeAT
- *
- * Copyright (C) 2015 to present Leon Jacobs
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- */
-
 namespace Helious\SeatNotificationsPlus\Traits;
 
 use Seat\Services\Exceptions\EveImageException;
@@ -30,7 +10,7 @@ use Seat\Services\Image\Eve;
  *
  * @package Seat\Notifications\Traits
  */
-trait NotificationTools
+trait EmbedNotificationTools
 {
     /**
      * Build a link to Eve Type.
@@ -56,13 +36,25 @@ trait NotificationTools
      * LDAP to readable date/time format
      * @param  int  $ldap
      */
-    public function ldapToDateTime(int $ldap): string
+    public function ldap2DateTime(int $ldap): string
     {
         $baseTimestamp = time(); // Current Unix timestamp
         $timeLeftInSeconds = $ldap / 10000000;
         $Timestamp = $baseTimestamp + $timeLeftInSeconds;
         $DateTime = gmdate("Y-m-d H:i:s", $Timestamp);
         return $DateTime;
+    }
+
+    public function ldapToDateTime($ldap)
+    {
+        $secondsFrom1601To1970 = (1970 - 1601) * 365 * 24 * 60 * 60;
+        $leapYears = 89; // Number of leap years between 1601 and 1970
+        $secondsFrom1601To1970 += $leapYears * 24 * 60 * 60; // Add the leap seconds
+        
+        $unixTimestamp = ($ldap / 10000000) - $secondsFrom1601To1970;
+            
+            // Convert Unix timestamp to human-readable format
+        return gmdate("Y-m-d H:i:s", $unixTimestamp);
     }
 
     /**

@@ -12,6 +12,7 @@ use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
 use Seat\Eveapi\Models\Sde\MapDenormalize;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
+use Seat\Eveapi\Models\Sde\Region;
 
 /**
  * Class StructureUnderAttack.
@@ -31,23 +32,23 @@ class StructureServicesOffline extends AbstractDiscordNotification
     public function populateMessage(DiscordMessage $message, $notifiable)
     {        
         $message->embed(function (DiscordEmbed $embed) {
-            $corpName = $this->notification->recipient->corporation->name;
-            $corpID = $this->notification->recipient->corporation->corporation_id;
+            $corpName = $this->notification->recipient->affiliation->corporation->name;
+            $corpID = $this->notification->recipient->affiliation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarsystemID']);
-            $region = MapDenormalize::find($system->regionID)->region->name;
+            $region = Region::find($system->regionID)->name;
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
-            $description = "The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system', $system->itemID, $system->itemName)} ({$region}) has all services off-lined.";
+            $description = "The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system', $system->itemID, $system->itemName)} ({$region}) has all services off-lined.\n";
             foreach ($this->notification->text['listOfServiceModuleIDs'] as $type_id) {
-                $type = InvType::find($type_id);
-                $description .= "\n" . $type->typeName;
+                $type2 = InvType::find($type_id);
+                $description .= "- " . $type2->typeName . "\n";
             }
 
-            $embed->color(DiscordMessage::INFO);
-            $embed->author('{$corpName}', 'https://images.evetech.net/corporations/{$corpID}/logo?size=128');
+            $embed->color(DiscordMessage::ERROR);
+           $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Services Offline');
-            $embed->thumb('https://images.evetech.net/types/{$type->typeID}/icon?size=128');
+            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->description($description);
             $embed->timestamp($this->notification->timestamp);
         });

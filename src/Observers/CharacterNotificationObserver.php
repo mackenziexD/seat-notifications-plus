@@ -13,10 +13,28 @@ class CharacterNotificationObserver
 
     public function created(CharacterNotification $notification)
     {
-        logger()->debug(
-            sprintf('[Notifications][%d] Character Notification - Queuing job due to registered in-game notification.', $notification->notification_id),
-            $notification->toArray());
-        $this->dispatch($notification);
+        \Log::error('Notification created');
+
+        $corporationId = $notification->recipient->affiliation->corporation_id;
+        // Attempt to retrieve the most recent notification for the corporation
+        $mostRecentSeatNotification = SeatNotificationsPlus::where('corporation_id', $corporationId)
+                                                            ->latest('most_recent_notification')
+                                                            ->first();
+
+        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp >= $mostRecentSeatNotification->most_recent_notification;
+
+        // If there is no record or if the current notification is newer, update or create the record
+        if ($isNewNotification) {
+            SeatNotificationsPlus::updateOrCreate(
+                ['corporation_id' => $corporationId],
+                ['most_recent_notification' => $notification->timestamp]
+            );
+            $this->dispatch($notification);
+        } else {
+            \Log::error($notification->timestamp .$mostRecentSeatNotification->most_recent_notification);
+            \Log::error('Notification is not new, not dispatching');
+            return;
+        }
     }
 
     /**
@@ -28,37 +46,19 @@ class CharacterNotificationObserver
     {
         $groups = NotificationGroup::with('alerts', 'affiliations')
             ->whereHas('alerts', function ($query) use ($notification) {
-                $query->where('alert', $notification->type . '[N+]');
+                $query->where('alert', $notification->type . ' [N+]');
             })->whereHas('affiliations', function ($query) use ($notification) {
                 $query->where('affiliation_id', $notification->character_id);
                 $query->orWhere('affiliation_id', $notification->recipient->affiliation->corporation_id);
             })->get();
 
+        \Log::error($groups);
 
-        $corporationId = $notification->recipient->affiliation->corporation_id;
-        // Attempt to retrieve the most recent notification for the corporation
-        $mostRecentSeatNotification = SeatNotificationsPlus::where('corporation_id', $corporationId)
-                                                            ->latest('most_recent_notification')
-                                                            ->first();
-
-        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp > $mostRecentSeatNotification->most_recent_notification;
-
-        // If there is no record or if the current notification is newer, update or create the record
-        if ($isNewNotification) {
-            SeatNotificationsPlus::updateOrCreate(
-                ['corporation_id' => $corporationId],
-                ['most_recent_notification' => $notification->timestamp]
-            );
-
-            // Proceed with dispatching the notifications
-            $this->dispatchNotifications($notification->type . '[N+]', $groups, function ($notificationClass) use ($notification) {
-                return new $notificationClass($notification);
-            });
-        } else {
-            // If the notification is not new, do not dispatch the notifications
-            \Log::debug('Notification is not new, not dispatching');
-            return;
-        }
+        // Proceed with dispatching the notifications
+        $this->dispatchNotifications($notification->type . ' [N+]', $groups, function ($notificationClass) use ($notification) {
+            \Log::error($notificationClass);
+            return new $notificationClass($notification);
+        });
     }
     
 }

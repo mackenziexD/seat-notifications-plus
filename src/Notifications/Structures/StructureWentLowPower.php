@@ -13,6 +13,7 @@ use Seat\Eveapi\Models\Sde\InvType;
 use Seat\Eveapi\Models\Sde\MapDenormalize;
 use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
+use Seat\Eveapi\Models\Sde\Region;
 
 /**
  * Class StructureUnderAttack.
@@ -32,18 +33,18 @@ class StructureWentLowPower extends AbstractDiscordNotification
     public function populateMessage(DiscordMessage $message, $notifiable)
     {        
         $message->embed(function (DiscordEmbed $embed) {
-            $corpName = $this->notification->recipient->corporation->name;
-            $corpID = $this->notification->recipient->corporation->corporation_id;
+            $corpName = $this->notification->recipient->affiliation->corporation->name;
+            $corpID = $this->notification->recipient->affiliation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarsystemID']);
-            $region = MapDenormalize::find($system->regionID)->region->name;
+            $region = Region::find($system->regionID)->name;
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureTypeID']);
             
             $embed->color(DiscordMessage::WARNING);
-            $embed->author('{$corpName}', 'https://images.evetech.net/corporations/{$corpID}/logo?size=128');
+           $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Went Low Power');
-            $embed->thumb('https://images.evetech.net/types/{$type->typeID}/icon?size=128');
+            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->description("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) went to low power mode.");
             $embed->timestamp($this->notification->timestamp);
         });
