@@ -2,115 +2,115 @@
 
 return [
     'AllAnchoringMsg [N+]' => [
-        'label' => 'notifications::alerts.alliance_anchoring',
+        'label' => 'AllAnchoringMsg [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\AllAnchoringMsg::class
         ],
     ],
     'EntosisCaptureStarted [N+]' => [
-        'label' => 'notifications::alerts.entosis_capture_started',
+        'label' => 'EntosisCaptureStarted [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Sovereignties\EntosisCaptureStarted::class
         ],
     ],
-    'MoonminingExtractionFinished [N+]' => [
-        'label' => 'notifications::alerts.moon_mining_extraction_finished',
+    'MoonminingExtractionFinished1111 [N+]' => [
+        'label' => 'MoonminingExtractionFinished1111 [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\MoonMiningExtractionFinished::class
         ],
     ],
     'MoonminingExtractionStarted [N+]' => [
-        'label' => 'notifications::alerts.moon_mining_extraction_started',
+        'label' => 'MoonminingExtractionStarted [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\MoonMiningExtractionStarted::class
         ],
     ],
     'OrbitalAttacked [N+]' => [
-        'label' => 'notifications::alerts.orbital_attacked',
+        'label' => 'OrbitalAttacked [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\OrbitalAttacked::class
         ],
     ],
     'OwnershipTransferred [N+]' => [
-        'label' => 'notifications::alerts.ownership_transferred',
+        'label' => 'OwnershipTransferred [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\OwnershipTransferred::class
         ],
     ],
     'SovCommandNodeEventStarted [N+]' => [
-        'label' => 'notifications::alerts.sovereignty_command_node_event_started',
+        'label' => 'SovCommandNodeEventStarted [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Sovereignties\SovCommandNodeEventStarted::class
         ],
     ],
     'SovStructureDestroyed [N+]' => [
-        'label' => 'notifications::alerts.sovereignty_structure_destroyed',
+        'label' => 'SovStructureDestroyed [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Sovereignties\SovStructureDestroyed::class
         ],
     ],
     'SovStructureReinforced [N+]' => [
-        'label' => 'notifications::alerts.sovereignty_structure_reinforced',
+        'label' => 'SovStructureReinforced [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Sovereignties\SovStructureReinforced::class
         ],
     ],
     'StructureAnchoring [N+]' => [
-        'label' => 'notifications::alerts.structure_anchoring',
+        'label' => 'StructureAnchoring [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureAnchoring::class
         ],
     ],
     'StructureDestroyed [N+]' => [
-        'label' => 'notifications::alerts.structure_destroyed',
+        'label' => 'StructureDestroyed [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureDestroyed::class
         ],
     ],
     'StructureFuelAlert [N+]' => [
-        'label' => 'notifications::alerts.structure_fuel_alert',
+        'label' => 'StructureFuelAlert [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureFuelAlert::class
         ],
     ],
     'StructureLostArmor [N+]' => [
-        'label' => 'notifications::alerts.structure_lost_armor',
+        'label' => 'StructureLostArmor [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureLostArmor::class
         ],
     ],
     'StructureLostShields [N+]' => [
-        'label' => 'notifications::alerts.structure_lost_shield',
+        'label' => 'StructureLostShields [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureLostShields::class
         ],
     ],
     'StructureServicesOffline [N+]' => [
-        'label' => 'notifications::alerts.structure_services_offline',
+        'label' => 'StructureServicesOffline [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureServicesOffline::class
         ],
     ],
     'StructureUnanchoring [N+]' => [
-        'label' => 'notifications::alerts.structure_unanchoring',
+        'label' => 'StructureUnanchoring [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureUnanchoring::class
         ],
     ],
     'StructureUnderAttack [N+]' => [
-        'label' => 'notifications::alerts.structure_under_attack',
+        'label' => 'StructureUnderAttack [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureUnderAttack::class
         ],
     ],
     'StructureWentHighPower [N+]' => [
-        'label' => 'notifications::alerts.structure_went_high_power',
+        'label' => 'StructureWentHighPower [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureWentHighPower::class
         ],
     ],
     'StructureWentLowPower [N+]' => [
-        'label' => 'notifications::alerts.structure_went_low_power',
+        'label' => 'StructureWentLowPower [N+]',
         'handlers' => [
             'discord' => \Seat\Notifications\Notifications\Structures\StructureWentLowPower::class
         ],
