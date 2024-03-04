@@ -1,6 +1,6 @@
 <?php
 
-namespace Helious\SeatNotifications\Http\Controllers;
+namespace Helious\SeatNotificationsPlus\Http\Controllers;
 
 use Seat\Eveapi\Models\Corporation\CorporationStructure;
 use Seat\Eveapi\Models\Corporation\CorporationStructureService;
@@ -15,7 +15,7 @@ class NotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function settings()
     {
         return $dataTable->render('seat-beacons::beacons.settings');
     }

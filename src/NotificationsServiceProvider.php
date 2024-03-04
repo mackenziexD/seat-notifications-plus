@@ -1,9 +1,11 @@
 <?php
 
-namespace Helious\SeatNotifications;
+namespace Helious\SeatNotificationsPlus;
 
 use Seat\Services\AbstractSeatPlugin;
 use Illuminate\Console\Scheduling\Schedule;
+use Seat\Eveapi\Models\Character\CharacterNotification;
+use Helious\SeatNotificationsPlus\Observers\CorporationAssetObserver;
 
 class NotificationsServiceProvider extends AbstractSeatPlugin
 {
@@ -17,6 +19,11 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
     {
         $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications.php', 'seat-notifications');
         $this->mergeConfigFrom(__DIR__ . '/Config/seat-notifications.sidebar.php', 'package.sidebar.tools.entries');
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/Config/notifications.alerts.php', 'notifications.alerts'
+        );
+
         $this->registerPermissions(__DIR__ . '/Config/seat-notifications.permissions.php', 'seat-notifications');
     }
 
@@ -31,8 +38,9 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'seat-beacons');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
-
         
+        CharacterNotification::observe(CharacterNotificationObserver::class);
+
     }
 
     /**
@@ -45,7 +53,6 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
         return __DIR__.'/routes.php';
     }
 
-    
 
     /**
      * Return the plugin public name as it should be displayed into settings.

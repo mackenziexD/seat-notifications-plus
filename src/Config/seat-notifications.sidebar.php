@@ -1,7 +1,7 @@
 <?php
+
 return [
-    
-    'name' => 'Notfications',
+    'name' => 'Notfications+',
     'icon' => 'fas fa-bell',
     'route_segment' => 'notifications',
     'entries' => [

@@ -2,7 +2,7 @@
 
 Route::group([
 
-    'namespace' => 'Helious\SeatNotifications\Http\Controllers',
+    'namespace' => 'Helious\SeatNotificationsPlus\Http\Controllers',
     'prefix' => 'notifications',
     'middleware' => [
         'web',

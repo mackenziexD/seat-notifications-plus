@@ -1,6 +1,6 @@
 <?php
 
-namespace Helious\SeatNotifications\Console;
+namespace Helious\SeatNotificationsPlus\Console;
 
 use Illuminate\Console\Command;
 use Seat\Eveapi\Models\Corporation\CorporationStructure;
@@ -8,7 +8,7 @@ use Seat\Eveapi\Models\Corporation\CorporationStructureService;
 use Carbon\Carbon;
 use Seat\Notifications\Models\NotificationGroup;
 use Illuminate\Support\Facades\Notification;
-use Helious\SeatNotifications\Notifications\StuctureWarnings;
+use Helious\SeatNotificationsPlus\Notifications\StuctureWarnings;
 use Seat\Notifications\Traits\NotificationDispatchTool;
 use Seat\Web\Models\User;
 
