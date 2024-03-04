@@ -5,7 +5,7 @@ namespace Helious\SeatNotificationsPlus;
 use Seat\Services\AbstractSeatPlugin;
 use Illuminate\Console\Scheduling\Schedule;
 use Seat\Eveapi\Models\Character\CharacterNotification;
-use Helious\SeatNotificationsPlus\Observers\CorporationAssetObserver;
+use Helious\SeatNotificationsPlus\Observers\CharacterNotificationObserver;
 
 class NotificationsServiceProvider extends AbstractSeatPlugin
 {
