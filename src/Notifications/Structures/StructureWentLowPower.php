@@ -41,7 +41,7 @@ class StructureWentLowPower extends AbstractDiscordNotification
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureTypeID']);
             
-            $embed->color(DiscordMessage::WARNING);
+            $embed->color('warning');
            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Went Low Power');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

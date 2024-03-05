@@ -45,7 +45,7 @@ class StructureServicesOffline extends AbstractDiscordNotification
                 $description .= "- " . $type2->typeName . "\n";
             }
 
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Services Offline');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

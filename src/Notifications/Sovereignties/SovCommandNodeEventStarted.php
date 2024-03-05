@@ -41,7 +41,7 @@ class SovCommandNodeEventStarted extends AbstractDiscordNotification
             $const = MapDenormalize::find($this->notification->text['constellationID']);
             $region = Region::find($system->regionID)->name;
             
-            $embed->color(DiscordMessage::WARNING);
+            $embed->color('warning');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             if($this->notification->text['campaignEventType'] === 1){
                 // TCU Event

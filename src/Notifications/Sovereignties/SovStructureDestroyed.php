@@ -41,7 +41,7 @@ class SovStructureDestroyed extends AbstractDiscordNotification
             $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['structureTypeID']);
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->title("{$type->group->groupName} in {$system->itemName} has been destroyed");

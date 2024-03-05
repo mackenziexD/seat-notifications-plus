@@ -45,7 +45,7 @@ class StructureUnderAttack extends AbstractDiscordNotification
             $armor = number_format($this->notification->text['armorPercentage']);
             $hull = number_format($this->notification->text['hullPercentage']);
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Under Attack');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

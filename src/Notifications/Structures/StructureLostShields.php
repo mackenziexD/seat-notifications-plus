@@ -42,7 +42,7 @@ class StructureLostShields extends AbstractDiscordNotification
             $timeLeft = $this->ldapToDateTime($this->notification->text['timeLeft']);
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Lost Shield');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

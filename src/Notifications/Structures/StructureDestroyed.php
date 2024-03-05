@@ -42,7 +42,7 @@ class StructureDestroyed extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->title('Structure Destroyed');

@@ -40,7 +40,7 @@ class SovStructureReinforced extends AbstractDiscordNotification
             $region = Region::find($system->regionID)->name;
             $deloakTime = $this->ldapToDateTime($this->notification->text['decloakTime']);
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             if($this->notification->text['campaignEventType'] === 1){
                 // TCU Event

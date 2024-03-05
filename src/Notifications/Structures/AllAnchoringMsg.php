@@ -43,7 +43,7 @@ class AllAnchoringMsg extends AbstractDiscordNotification
             $type = InvType::find($this->notification->text['typeID']);
             $moon = MapDenormalize::find($this->notification->text['moonID']);
             
-            $embed->color(DiscordMessage::WARNING);
+            $embed->color('warning');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('{$type->group->groupName} anchored in {$system->itemName}');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

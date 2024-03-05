@@ -42,7 +42,7 @@ class OrbitalAttacked extends AbstractDiscordNotification
             $type = InvType::find($this->notification->text['typeID']);
             $planet = MapDenormalize::find($this->notification->text['planetID']);
             
-            $embed->color(DiscordMessage::ERROR);
+            $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Orbital under attack');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');

@@ -2,14 +2,14 @@
 
 namespace Helious\SeatNotificationsPlus\Observers;
 
+use Illuminate\Support\Facades\Notification;
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Notifications\Models\NotificationGroup;
+
 use Helious\SeatNotificationsPlus\Models\SeatNotificationsPlus;
-use Seat\Notifications\Traits\NotificationDispatchTool;
 
 class CharacterNotificationObserver
 {
-    use NotificationDispatchTool;
 
     public function created(CharacterNotification $notification)
     {
