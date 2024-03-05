@@ -33,12 +33,12 @@ class TestObs extends Command
         CharacterNotification::create([
             'character_id' => 2116795743,
             'notification_id' => 1923730118,
-            'type' => 'TowerResourceAlertMsg',
+            'type' => 'StructureLostShields',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
-            'timestamp' => '2024-03-04 17:51:00',
+            'timestamp' => '2024-03-05 01:49:00',
             'is_read' => 0,
-            'text' => "allianceID: 99005338\ncorpID: 2014367342\nmoonID: 40328176\nsolarSystemID: 30005189\ntypeID: 20065\nwants:\n- quantity: 255\n  typeID: 4246"
+            'text' => "solarsystemID: 30004068\nstructureID: &id001 1043652648031\nstructureShowInfoData:\n- showinfo\n- 35835\n- *id001\nstructureTypeID: 35835\ntimeLeft: 3612236828034\ntimestamp: 133486337110000000\nvulnerableTime: 9000000000"
         ]);
         $this->info('Notification created.');
     }

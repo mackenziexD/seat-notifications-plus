@@ -39,7 +39,7 @@ class StructureLostShields extends AbstractDiscordNotification
             $region = Region::find($system->regionID)->name;
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
-            $timeLeft = $this->ldapToDateTime($this->notification->text['timeLeft']);
+            $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft']);
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
             
             $embed->color(DiscordMessage::ERROR);
