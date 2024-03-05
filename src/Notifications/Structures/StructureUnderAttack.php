@@ -41,9 +41,9 @@ class StructureUnderAttack extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
-            $sheild = number_format($this->notification->text['shieldPercentage']);
-            $armor = number_format($this->notification->text['armorPercentage']);
-            $hull = number_format($this->notification->text['hullPercentage']);
+            $sheild = number_format($this->notification->text['shieldPercentage'], 2);
+            $armor = number_format($this->notification->text['armorPercentage'], 2);
+            $hull = number_format($this->notification->text['hullPercentage'], 2);
             
             $embed->color('danger');
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');

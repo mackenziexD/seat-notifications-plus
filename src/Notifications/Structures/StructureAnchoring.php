@@ -40,7 +40,7 @@ class StructureAnchoring extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
-            $timeLeft = $this->ldapToDateTime($this->notification->text['timeLeft']);
+            $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft']);
             
             $embed->color(DiscordMessage::INFO);
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
