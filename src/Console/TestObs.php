@@ -31,7 +31,7 @@ class TestObs extends Command
     public function handle()
     {
         CharacterNotification::create([
-            'character_id' => 2116795743,
+            'character_id' => 2114464253,
             'notification_id' => 1923730118,
             'type' => 'TowerResourceAlertMsg',
             'sender_id' => 1000137,
