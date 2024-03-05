@@ -21,7 +21,7 @@ class CharacterNotificationObserver
                                                             ->latest('most_recent_notification')
                                                             ->first();
 
-        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp >= $mostRecentSeatNotification->most_recent_notification;
+        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp > $mostRecentSeatNotification->most_recent_notification;
 
         // If there is no record or if the current notification is newer, update or create the record
         if ($isNewNotification) {
