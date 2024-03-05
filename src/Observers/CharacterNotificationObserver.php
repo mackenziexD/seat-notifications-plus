@@ -18,8 +18,8 @@ class CharacterNotificationObserver
         $corporationId = $notification->recipient->affiliation->corporation_id;
         // Attempt to retrieve the most recent notification for the corporation
         $mostRecentSeatNotification = SeatNotificationsPlus::where('corporation_id', $corporationId)
-                                                            ->latest('most_recent_notification')
-                                                            ->first();
+            ->latest('most_recent_notification')
+            ->first();
 
         $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp > $mostRecentSeatNotification->most_recent_notification;
 
