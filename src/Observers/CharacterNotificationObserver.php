@@ -111,7 +111,6 @@ class CharacterNotificationObserver
                 ];
             });
         });
-        \Log::error($routes);
 
         return $routes->flatten()->unique(function ($integration) {
             return $integration->channel . $integration->route;

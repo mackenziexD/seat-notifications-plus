@@ -3,7 +3,7 @@
 namespace Helious\SeatNotificationsPlus\Notifications\Structures;
 
 use Illuminate\Notifications\Messages\SlackMessage;
-use Seat\Notifications\Notifications\AbstractNotification;
+use Helious\SeatNotificationsPlus\Notifications\AbstractNotification;
 use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
 use Helious\SeatNotificationsPlus\Traits\StarbaseUtilities;
 

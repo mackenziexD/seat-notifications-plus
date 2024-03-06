@@ -5,7 +5,7 @@ namespace Helious\SeatNotificationsPlus\Notifications\Structures;
 
 use Illuminate\Notifications\Messages\SlackMessage;
 use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
-use Seat\Notifications\Notifications\AbstractNotification;
+use Helious\SeatNotificationsPlus\Notifications\AbstractNotification;
 
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
