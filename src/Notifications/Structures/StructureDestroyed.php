@@ -2,11 +2,9 @@
 
 namespace Helious\SeatNotificationsPlus\Notifications\Structures;
 
-use Seat\Notifications\Notifications\AbstractDiscordNotification;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbed;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbedField;
-use Seat\Notifications\Services\Discord\Messages\DiscordMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
+use Seat\Notifications\Notifications\AbstractNotification;
 
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
@@ -15,12 +13,13 @@ use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Corporation\CorporationStructure;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Region;
+use Carbon\Carbon;
 
 /**
  * Class StructureUnderAttack.
  *
  */
-class StructureDestroyed extends AbstractDiscordNotification
+class StructureDestroyed extends AbstractNotification
 {
     use attachmentNotificationTools;
 
@@ -31,9 +30,23 @@ class StructureDestroyed extends AbstractDiscordNotification
         $this->notification = $notification;
     }
 
-    public function populateMessage(DiscordMessage $message, $notifiable)
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
     {
-        $message->embed(function (DiscordEmbed $embed) {
+        return ['slack'];
+    }
+
+    /**
+     * @param $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
+     */
+    public function toSlack($notifiable)
+    {
+        return (new SlackMessage)
+            ->attachment(function ($attachment) {
             $corpName = $this->notification->recipient->affiliation->corporation->name;
             $corpID = $this->notification->recipient->affiliation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarsystemID']);
@@ -42,12 +55,21 @@ class StructureDestroyed extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             
-            $embed->color('danger');
-            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-            $embed->title('Structure Destroyed');
-            $embed->description("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) has been destroyed.");
-            $embed->timestamp($this->notification->timestamp);
+            $attachment->color('danger')
+            ->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
+            ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
+            ->title('Structure Destroyed')
+            ->content("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) has been destroyed.")
+            ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
         });
+    }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return $this->notification->text;
     }
 }

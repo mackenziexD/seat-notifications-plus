@@ -2,11 +2,9 @@
 
 namespace Helious\SeatNotificationsPlus\Notifications\Sovereignties;
 
-use Seat\Notifications\Notifications\AbstractDiscordNotification;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbed;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbedField;
-use Seat\Notifications\Services\Discord\Messages\DiscordMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
+use Seat\Notifications\Notifications\AbstractNotification;
 
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
@@ -15,12 +13,13 @@ use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Planet;
 use Seat\Eveapi\Models\Sde\Region;
+use Carbon\Carbon;
 
 /**
  * Class EntosisCaptureStarted.
  *
  */
-class EntosisCaptureStarted extends AbstractDiscordNotification
+class EntosisCaptureStarted  extends AbstractNotification
 {
     use attachmentNotificationTools;
 
@@ -31,21 +30,44 @@ class EntosisCaptureStarted extends AbstractDiscordNotification
         $this->notification = $notification;
     }
 
-    public function populateMessage(DiscordMessage $message, $notifiable)
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
     {
-        $message->embed(function (DiscordEmbed $embed) {
+        return ['slack'];
+    }
+
+    /**
+     * @param $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
+     */
+    public function toSlack($notifiable)
+    {
+        return (new SlackMessage)
+            ->attachment(function ($attachment) {
             $corpName = $this->notification->recipient->affiliation->corporation->name;
             $corpID = $this->notification->recipient->affiliation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarSystemID']);
             $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['structureTypeID']);
             
-            $embed->color('warning');
-            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-            $embed->title("{$type->group->groupName} in {$system->itemName} is being captured");
-            $embed->description("A capsuleer has started to influence the {$type->typeName} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) with an Entosis Link.");
-            $embed->timestamp($this->notification->timestamp);
+            $attachment->color('warning');
+            $attachment->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
+            $attachment->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
+            $attachment->title("{$type->group->groupName} in {$system->itemName} is being captured");
+            $attachment->content("A capsuleer has started to influence the {$type->typeName} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) with an Entosis Link.");
+            $attachment->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
         });
+    }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return $this->notification->text;
     }
 }

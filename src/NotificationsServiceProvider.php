@@ -7,6 +7,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Helious\SeatNotificationsPlus\Observers\CharacterNotificationObserver;
 use Helious\SeatNotificationsPlus\Console\TestObs;
+use Helious\SeatNotificationsPlus\Console\ImportNotificationsTest;
 
 class NotificationsServiceProvider extends AbstractSeatPlugin
 {
@@ -51,6 +52,7 @@ class NotificationsServiceProvider extends AbstractSeatPlugin
     {
         $this->commands([
             TestObs::class,
+            ImportNotificationsTest::class,
         ]);
     }
 

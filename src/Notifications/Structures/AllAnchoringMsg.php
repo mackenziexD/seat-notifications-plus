@@ -64,4 +64,13 @@ class AllAnchoringMsg extends AbstractNotification
             ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp)->getTimestamp());
         });
     }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return $this->notification->text;
+    }
 }

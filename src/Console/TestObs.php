@@ -33,12 +33,12 @@ class TestObs extends Command
         CharacterNotification::create([
             'character_id' => 94154296,
             'notification_id' => 1923730118,
-            'type' => 'AllAnchoringMsg',
+            'type' => 'StructureWentHighPower',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
             'timestamp' => '2024-03-06 23:52:00',
             'is_read' => 0,
-            'text' => "allianceID: 99005338\ncorpID: 2014367342\nmoonID: 40328176\nsolarSystemID: 30005189\ntypeID: 20065\nwants:\n- quantity: 255"
+            'text' => "solarsystemID: 30003235\nstructureID: &id001 1044596949033\nstructureShowInfoData:\n- showinfo\n- 35841\n- *id001\nstructureTypeID: 35841\n"
         ]);
         $this->info('Notification created.');
     }

@@ -92,4 +92,18 @@ trait attachmentNotificationTools
                 return 'Unknown';
         }
     }
+
+    public function campaignEventTypeIcon(int $type): string
+    {
+        switch ($type) {
+            case 1:
+                return 'https://images.evetech.net/types/32226/icon?size=128';
+            case 2:
+                return 'https://images.evetech.net/types/32458/icon?size=128';
+            case 3:
+                return 'https://images.evetech.net/types/12242/icon?size=128';
+            default:
+                return 'https://images.evetech.net/types/0/icon?size=128';
+        }
+    }
 }
