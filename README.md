@@ -26,7 +26,12 @@ SeAT 5: SEAT_PLUGINS=helious/seat-notifications
 SeAT 4: SEAT_PLUGINS=helious/seat-notifications:4.x-dev
 ```
 ## Notifications
-1. 
+> :warning: **DISCORD ONLY SUPPORTED** FOR SeAT 5 
+
+All the new notifcation types have `[N+]` appended so be sure to select the correct Alerts when setting it up.
+1. setup your Affiliations be either characters or corporations
+2. add your alerts (eg AllAnchoringMsg [N+], EntosisCaptureStarted [N+], etc)
+3. select your Integration of the webhook you created.
 
 ### Changelog
 
