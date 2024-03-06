@@ -74,7 +74,7 @@ class CharacterNotificationObserver
 
                 // enqueue the notification
                 Notification::route($integration->channel, $integration->route)
-                    ->notify(new $handler($notification));
+                    ->notifyNow(new $handler($notification));
             }
         });
     }
