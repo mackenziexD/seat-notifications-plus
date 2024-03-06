@@ -12,6 +12,7 @@ use Seat\Eveapi\Models\Sde\MapDenormalize;
 use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Region;
+use Carbon\Carbon;
 
 /**
  * Class StructureUnderAttack.
