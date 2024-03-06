@@ -36,7 +36,7 @@ class ImportNotificationsTest extends Command
                 'type' => $notificationData['type'],
                 'sender_id' => $notificationData['sender_id'],
                 'sender_type' => $notificationData['sender_type'],
-                'timestamp' => '2024-03-06 23:52:00',
+                'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
                 'text' => $notificationData['text']
             ]);
         }
