@@ -1,12 +1,11 @@
 <?php
 
-namespace Helious\SeatNotificationsPlus\Notifications;
+namespace Helious\SeatNotificationsPlus\Notifications\Structures;
 
-use Seat\Notifications\Notifications\AbstractDiscordNotification;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbed;
-use Seat\Notifications\Services\Discord\Messages\DiscordEmbedField;
-use Seat\Notifications\Services\Discord\Messages\DiscordMessage;
-use Helious\SeatNotificationsPlus\Traits\EmbedNotificationTools;
+use Illuminate\Notifications\Messages\SlackMessage;
+use Seat\Notifications\Notifications\AbstractNotification;
+use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
+use Helious\SeatNotificationsPlus\Traits\StarbaseUtilities;
 
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
@@ -15,14 +14,15 @@ use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Planet;
 use Seat\Eveapi\Models\Sde\Region;
+use Carbon\Carbon;
 
 /**
  * Class StructureUnderAttack.
  *
  */
-class AllAnchoringMsg extends AbstractDiscordNotification
+class AllAnchoringMsg extends AbstractNotification
 {
-    use EmbedNotificationTools;
+    use attachmentNotificationTools;
 
     private CharacterNotification $notification;
 
@@ -31,24 +31,37 @@ class AllAnchoringMsg extends AbstractDiscordNotification
         $this->notification = $notification;
     }
 
-    public function populateMessage(DiscordMessage $message, $notifiable)
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
     {
-        $message->embed(function (DiscordEmbed $embed) {
+        return ['slack'];
+    }
+
+    /**
+     * @param $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
+     */
+    public function toSlack($notifiable)
+    {
+        return (new SlackMessage)
+            ->attachment(function ($attachment) {
             $corpName = $this->notification->recipient->affiliation->corporation->name;
             $corpID = $this->notification->recipient->affiliation->corporation_id;
             $owner = !empty($this->notification->text['allianceID']) ? $this->zKillBoardToDiscordLink('alliance',$this->notification->text['allianceID'],UniverseName::firstOrNew(['entity_id' => $this->notification->text['allianceID']],['category' => 'alliance', 'name' => trans('web::seat.unknown')])->name):$this->zKillBoardToDiscordLink('corporation',$this->notification->text['corpID'],UniverseName::firstOrNew(['entity_id' => $this->notification->text['corpID']],['category' => 'corporation', 'name' => trans('web::seat.unknown')] )->name);
-            $corpID = $this->notification->recipient->corporation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarSystemID']);
             $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['typeID']);
             $moon = MapDenormalize::find($this->notification->text['moonID']);
             
-            $embed->color('warning');
-            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-            $embed->title('{$type->group->groupName} anchored in {$system->itemName}');
-            $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-            $embed->description("a {$type->typeName} from {$owner} has anchored in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) near **{$moon}**.");
-            $embed->timestamp($this->notification->timestamp);
+            $attachment->color('warning')
+            ->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
+            ->title("{$type->group->groupName} anchored in {$system->itemName}")
+            ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
+            ->content("a {$type->typeName} from {$owner} has anchored in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) near **{$moon->itemName}**.")
+            ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp)->getTimestamp());
         });
     }
 }

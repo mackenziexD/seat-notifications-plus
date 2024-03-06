@@ -76,12 +76,12 @@ class TowerResourceAlertMsg extends AbstractNotification
                     $FuelLeft = "Unknown";
                 }
 
-                $attachment->color('warning');
-                $attachment->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-                $attachment->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-                $attachment->title("{$type->group->groupName} fuel alert");
-                $attachment->description("The {$type->typeName} at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is running out of fuel in: **{$FuelLeft}**");
-                $attachment->timestamp($this->notification->timestamp);
+                $attachment->color('warning')
+                ->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
+                ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
+                ->title("{$type->group->groupName} fuel alert")
+                ->content("The {$type->typeName} at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is running out of fuel in: **{$FuelLeft}**")
+                ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp)->getTimestamp());
             });
     }
 

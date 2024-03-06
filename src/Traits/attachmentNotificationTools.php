@@ -10,7 +10,7 @@ use Seat\Services\Image\Eve;
  *
  * @package Seat\Notifications\Traits
  */
-trait EmbedNotificationTools
+trait attachmentNotificationTools
 {
     /**
      * Build a link to Eve Type.

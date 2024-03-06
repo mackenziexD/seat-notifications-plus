@@ -21,15 +21,20 @@ class CharacterNotificationObserver
             ->latest('most_recent_notification')
             ->first();
 
-        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp > $mostRecentSeatNotification->most_recent_notification;
+        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp >= $mostRecentSeatNotification->most_recent_notification;
 
         // If there is no record or if the current notification is newer, update or create the record
-        if (!$isNewNotification) return;
-        SeatNotificationsPlus::updateOrCreate(
-            ['corporation_id' => $corporationId],
-            ['most_recent_notification' => $notification->timestamp]
-        );
-        $this->dispatch($notification);
+        if ($isNewNotification) {
+            SeatNotificationsPlus::updateOrCreate(
+                ['corporation_id' => $corporationId],
+                ['most_recent_notification' => $notification->timestamp]
+            );
+            $this->dispatch($notification);
+        } else {
+            \Log::error($notification->timestamp .$mostRecentSeatNotification->most_recent_notification);
+            \Log::error('Notification is not new, not dispatching');
+            return;
+        }
     }
 
     /**
@@ -40,7 +45,7 @@ class CharacterNotificationObserver
     private function dispatch(CharacterNotification $notification)
     {
         // detect handlers setup for the current notification
-        $handlers = config(sprintf('notifications.alerts.%s.handlers', $notification->type), []);
+        $handlers = config(sprintf('notifications.alerts.%s.handlers', $notification->type  . ' [N+]'), []);
 
         // if the notification is unsupported (no handlers available), log and interrupt
         if (empty($handlers)) {
@@ -89,7 +94,7 @@ class CharacterNotificationObserver
                 $query->where('affiliation_id', $notification->character_id);
                 $query->orWhere('affiliation_id', $notification->recipient->affiliation->corporation_id);
             })->get();
-        
+
         // loop over each group candidate and collect available integrations
         $routes = $settings->map(function ($group) {
             return $group->integrations->map(function ($channel) {
@@ -106,6 +111,7 @@ class CharacterNotificationObserver
                 ];
             });
         });
+        \Log::error($routes);
 
         return $routes->flatten()->unique(function ($integration) {
             return $integration->channel . $integration->route;

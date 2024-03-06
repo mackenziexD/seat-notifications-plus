@@ -13,6 +13,7 @@ use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Universe\UniverseStructure;
 use Seat\Eveapi\Models\Sde\Planet;
 use Seat\Eveapi\Models\Sde\Region;
+use Carbon\Carbon;
 
 /**
  * Class EntosisCaptureStarted.
@@ -62,12 +63,12 @@ class TowerAlertMsg extends AbstractNotification
                 $armorPercent = number_format($armorValue, 2);
                 $hullPercent = number_format($hullValue, 2);
                 
-                $attachment->color('warning');
-                $attachment->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-                $attachment->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-                $attachment->title("{$type->group->groupName} under attack");
-                $attachment->description("The {$type->typeName} at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is under attack by {$attacker}.\n**Shield:** {$shieldPercent}% | **Armor:** {$armorPercent}% | **Hull:** {$hullPercent}%");
-                $attachment->timestamp($this->notification->timestamp);
+                $attachment->color('danger')
+                ->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
+                ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
+                ->title("{$type->group->groupName} fuel alert")
+                ->content("The {$type->typeName} at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is under attack by {$attacker}.\n**Shield:** {$shieldPercent}% | **Armor:** {$armorPercent}% | **Hull:** {$hullPercent}%")
+                ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
             });
     }
 

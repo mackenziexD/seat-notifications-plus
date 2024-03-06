@@ -6,7 +6,7 @@ use Seat\Notifications\Notifications\AbstractDiscordNotification;
 use Seat\Notifications\Services\Discord\Messages\DiscordEmbed;
 use Seat\Notifications\Services\Discord\Messages\DiscordEmbedField;
 use Seat\Notifications\Services\Discord\Messages\DiscordMessage;
-use Helious\SeatNotificationsPlus\Traits\EmbedNotificationTools;
+use Helious\SeatNotificationsPlus\Traits\attachmentNotificationTools;
 
 use Seat\Eveapi\Models\Character\CharacterNotification;
 use Seat\Eveapi\Models\Sde\InvType;
@@ -22,7 +22,7 @@ use Seat\Eveapi\Models\Sde\Region;
  */
 class EntosisCaptureStarted extends AbstractDiscordNotification
 {
-    use EmbedNotificationTools;
+    use attachmentNotificationTools;
 
     private CharacterNotification $notification;
 
