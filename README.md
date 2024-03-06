@@ -1,7 +1,7 @@
 # SeAT-Notifcations+
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/seat-notifications-plus.svg?style=flat-square)](https://packagist.org/packages/seat-notifications-plus)
-[![Total Downloads](https://img.shields.io/packagist/dt/seat-notifications-plus.svg?style=flat-square)](https://packagist.org/packages/seat-notifications-plus)
+[![Latest Version on Packagist](https://img.shields.io/packagist/helious/seat-notifications-plus.svg?style=flat-square)](https://packagist.org/packages/helious/seat-notifications-plus)
+[![Total Downloads](https://img.shields.io/packagist/dt/helious/seat-notifications-plus.svg?style=flat-square)](https://packagist.org/packages/helious/seat-notifications-plus)
 
 Notifications+ plugin for [SeAT](https://github.com/eveseat/seat) and basically pulls notifications for characters of a specified corporation and sends them to a discord channel about about things such as SOV, Citadel Events (Anchoring, Under Attack, etc.). 
 
