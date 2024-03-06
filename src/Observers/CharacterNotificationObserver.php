@@ -31,7 +31,6 @@ class CharacterNotificationObserver
             );
             $this->dispatch($notification);
         } else {
-            \Log::error($notification->timestamp .$mostRecentSeatNotification->most_recent_notification);
             \Log::error('Notification is not new, not dispatching');
             return;
         }
@@ -52,12 +51,10 @@ class CharacterNotificationObserver
                 $query->orWhere('affiliation_id', $notification->recipient->affiliation->corporation_id);
             })->get();
 
-        \Log::error($groups);
-
         // Proceed with dispatching the notifications
         $this->dispatchNotifications($notification->type . ' [N+]', $groups, function ($notificationClass) use ($notification) {
             \Log::error($notificationClass);
-            return new $notificationClass($notification);
+            return (new $notificationClass($notification))->onQueue('high');
         });
     }
     
