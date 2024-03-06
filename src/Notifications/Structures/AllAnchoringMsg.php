@@ -45,9 +45,9 @@ class AllAnchoringMsg extends AbstractDiscordNotification
             
             $embed->color(DiscordMessage::WARNING);
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
-            $embed->title('{$type->group->groupName} anchored in {$system->itemName}');
+            $embed->title("{$type->group->groupName} anchored in {$system->itemName}");
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-            $embed->description("a {$type->typeName} from {$owner} has anchored in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) near **{$moon}**.");
+            $embed->description("a {$type->typeName} from {$owner} has anchored in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) near **{$moon->itemName}**.");
             $embed->timestamp($this->notification->timestamp);
         });
     }
