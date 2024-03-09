@@ -33,10 +33,6 @@ All the new notifcation types have `[N+]` appended so be sure to select the corr
 2. add your alerts (eg AllAnchoringMsg [N+], EntosisCaptureStarted [N+], etc)
 3. select your Integration of the webhook you created.
 
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
