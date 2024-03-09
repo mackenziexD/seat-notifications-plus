@@ -17,13 +17,13 @@ You can install the package via composer:
 
 ```bash
 SeAT 5: composer require helious/seat-notifications-plus
-SeAT 4: composer require helious/seat-notifications-plus:v4.x-dev
+SeAT 4: composer require helious/seat-notifications-plus:4.*
 ```
 
 or via docker
 ```bash
 SeAT 5: SEAT_PLUGINS=helious/seat-notifications-plus
-SeAT 4: SEAT_PLUGINS=helious/seat-notifications-plus:4.x-dev
+SeAT 4: SEAT_PLUGINS=helious/seat-notifications-plus:4.*
 ```
 ## Notifications
 > :warning: **DISCORD ONLY SUPPORTED** FOR SeAT 5 
