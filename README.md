@@ -8,7 +8,7 @@ Notifications+ plugin for [SeAT](https://github.com/eveseat/seat) and basically 
 ![https://i.imgur.com/NAvfjG9.jpeg](https://i.imgur.com/NAvfjG9.jpeg)
 
 ## Why not use SeAT's built in notifications?
-because it only grabs notifications once every 20min(by default) which can be improved by changing to schedule time on it but default SeAT notifcations sends multiple webhook messages for the same notification if you have multiple characters for that corp plugged into seat. the design of the embeds it sends look awful and not very informative. So I decided to make my own to fix these issues by checking last the last notification was sent if it exists before sending it to the webhook and fixing the embeds to be more informative and look cleaner.
+default SeAT notifcations sends multiple  messages for the same notification if you have multiple characters for that corp under the affilicated corp as theres no checking when a last notifcation was sent or handling for more than one character it doesnt appear to be designed this way and the design of the embeds it sends are not very informative. So I decided to make my own to fix these issues by checking when a last notification was sent for that afflicated corp and fixing the embeds to be more informative and look cleaner.
 
 
 ## Installation
