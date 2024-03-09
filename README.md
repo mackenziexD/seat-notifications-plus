@@ -8,7 +8,7 @@ Notifications+ plugin for [SeAT](https://github.com/eveseat/seat) and basically 
 ![https://i.imgur.com/NAvfjG9.jpeg](https://i.imgur.com/NAvfjG9.jpeg)
 
 ## Why not use SeAT's built in notifications?
-default SeAT notifcations sends multiple  messages for the same notification if you have multiple characters for that corp under the affilicated corp as theres no checking when a last notifcation was sent or handling for more than one character it doesnt appear to be designed this way and the design of the embeds it sends are not very informative. So I decided to make my own to fix these issues by checking when a last notification was sent for that afflicated corp and fixing the embeds to be more informative and look cleaner.
+default SeAT notifcations sends multiple  messages for the same notification if you have multiple characters for that corp under the affilicated corp as theres no checking when a last notifcation was sent or handling for more than one character it doesnt appear to be designed this way and the design of the embeds it sends are not very informative. So I decided to make my own to fix these issues by checking when a last notification was sent for that afflicated corp and fixing the embeds to be more informative and look cleaner (by reusing the old code from default notifcations i just refactored how the embeds are look and the info they display).
 
 
 ## Installation
