@@ -14,13 +14,13 @@ return [
         ],
     ],
     'MoonminingExtractionFinished [N+]' => [
-        'label' => 'MoonminingExtractionFinished [N+]',
+        'label' => 'MoonMiningExtractionFinished [N+]',
         'handlers' => [
             'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionFinished::class
         ],
     ],
     'MoonminingExtractionStarted [N+]' => [
-        'label' => 'MoonminingExtractionStarted [N+]',
+        'label' => 'MoonMiningExtractionStarted [N+]',
         'handlers' => [
             'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionStarted::class
         ],
