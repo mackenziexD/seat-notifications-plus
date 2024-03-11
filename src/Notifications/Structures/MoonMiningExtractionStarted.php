@@ -20,7 +20,7 @@ use Seat\Eveapi\Models\Sde\Region;
  * Class StructureUnderAttack.
  *
  */
-class MoonMiningExtractionStarted extends AbstractDiscordNotification
+class MoonminingExtractionStarted extends AbstractDiscordNotification
 {
     use EmbedNotificationTools;
 

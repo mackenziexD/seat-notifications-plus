@@ -1,6 +1,6 @@
 <?php
 
-namespace Helious\SeatNotificationsPlus\Notifications;
+namespace Helious\SeatNotificationsPlus\Notifications\Structures;
 
 use Seat\Notifications\Notifications\AbstractDiscordNotification;
 use Seat\Notifications\Services\Discord\Messages\DiscordEmbed;
@@ -37,7 +37,6 @@ class AllAnchoringMsg extends AbstractDiscordNotification
             $corpName = $this->notification->recipient->affiliation->corporation->name;
             $corpID = $this->notification->recipient->affiliation->corporation_id;
             $owner = !empty($this->notification->text['allianceID']) ? $this->zKillBoardToDiscordLink('alliance',$this->notification->text['allianceID'],UniverseName::firstOrNew(['entity_id' => $this->notification->text['allianceID']],['category' => 'alliance', 'name' => trans('web::seat.unknown')])->name):$this->zKillBoardToDiscordLink('corporation',$this->notification->text['corpID'],UniverseName::firstOrNew(['entity_id' => $this->notification->text['corpID']],['category' => 'corporation', 'name' => trans('web::seat.unknown')] )->name);
-            $corpID = $this->notification->recipient->corporation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarSystemID']);
             $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['typeID']);

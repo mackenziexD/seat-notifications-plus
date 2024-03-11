@@ -30,6 +30,7 @@ class ImportNotificationsTest extends Command
 
         // Iterate through each notification and insert into the database
         foreach ($json as $notificationData) {
+            $this->info('Importing notification ' . $notificationData['type'] . '...');
             CharacterNotification::create([
                 'character_id' => $notificationData['character_id'],
                 'notification_id' => $notificationData['notification_id'],

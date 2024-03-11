@@ -13,16 +13,16 @@ return [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Sovereignties\EntosisCaptureStarted::class
         ],
     ],
-    'MoonMiningExtractionFinished [N+]' => [
+    'MoonminingExtractionFinished [N+]' => [
         'label' => 'MoonMiningExtractionFinished [N+]',
         'handlers' => [
-            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonMiningExtractionFinished::class
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionFinished::class
         ],
     ],
-    'MoonMiningExtractionStarted [N+]' => [
+    'MoonminingExtractionStarted [N+]' => [
         'label' => 'MoonMiningExtractionStarted [N+]',
         'handlers' => [
-            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonMiningExtractionStarted::class
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionStarted::class
         ],
     ],
     'OrbitalAttacked [N+]' => [
