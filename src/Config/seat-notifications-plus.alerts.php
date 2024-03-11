@@ -16,13 +16,13 @@ return [
     'MoonminingExtractionFinished [N+]' => [
         'label' => 'MoonMiningExtractionFinished [N+]',
         'handlers' => [
-            'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonMiningExtractionFinished::class
+            'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionFinished::class
         ],
     ],
     'MoonminingExtractionStarted [N+]' => [
         'label' => 'MoonMiningExtractionStarted [N+]',
         'handlers' => [
-            'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonMiningExtractionStarted::class
+            'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingExtractionStarted::class
         ],
     ],
     'OrbitalAttacked [N+]' => [
