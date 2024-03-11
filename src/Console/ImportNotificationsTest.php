@@ -39,6 +39,7 @@ class ImportNotificationsTest extends Command
                 'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
                 'text' => $notificationData['text']
             ]);
+            sleep(1);
         }
 
         $this->info('Notifications imported successfully.');
