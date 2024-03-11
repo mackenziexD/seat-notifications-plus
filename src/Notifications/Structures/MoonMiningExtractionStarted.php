@@ -19,7 +19,7 @@ use Carbon\Carbon;
  * Class StructureUnderAttack.
  *
  */
-class MoonminingExtractionStarted extends AbstractNotification
+class MoonMiningExtractionStarted extends AbstractNotification
 {
     use attachmentNotificationTools;
 
