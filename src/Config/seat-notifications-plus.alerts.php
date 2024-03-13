@@ -126,5 +126,11 @@ return [
         'handlers' => [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Towers\TowerAlertMsg::class
         ],
+    ],
+    'StructureOnline [N+]' => [
+        'label' => 'StructureOnline [N+]',
+        'handlers' => [
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Towers\StructureOnline::class
+        ],
     ]
 ];
