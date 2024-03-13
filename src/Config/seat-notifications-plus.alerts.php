@@ -126,5 +126,11 @@ return [
         'handlers' => [
             'slack' => \Helious\SeatNotificationsPlus\Notifications\Towers\TowerAlertMsg::class
         ],
+    ],
+    'StructureOnline [N+]' => [
+        'label' => 'StructureOnline [N+]',
+        'handlers' => [
+            'slack' => \Helious\SeatNotificationsPlus\Notifications\Structures\StructureOnline::class
+        ],
     ]
 ];
