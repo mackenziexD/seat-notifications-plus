@@ -203,6 +203,17 @@
         "text": "allianceID: 3001\ncorpID: 2001\ncorpsPresent:\n- allianceID: 3001\n  corpID: 2002\nmoonID: 40161466\nsolarSystemID: 30000401\ntowers:\n- moonID: 40161465\n  typeID: 16213\ntypeID: 16213\n",
         "is_read": false,
         "is_sent": false
+    },
+    {
+        "character_id": 94154296,
+        "notification_id": 1000000919,
+        "type": "StructureOnline",
+        "sender_id": 3001,
+        "sender_type": "corporation",
+        "timestamp": "2019-11-18 20:00:00",
+        "text": "requiresDeedTypeID: 56205.0\n solarsystemID: 30002858\n structureID: &id001 1044664744491\n structureShowInfoData:\n - showinfo\n - 35836\n - *id001\n structureTypeID: 35836\n",
+        "is_read": false,
+        "is_sent": false
     }
 
 ]

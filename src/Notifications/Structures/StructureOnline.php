@@ -18,7 +18,7 @@ use Carbon\Carbon;
  * Class StructureUnderAttack.
  *
  */
-class StructureWentHighPower  extends AbstractNotification
+class StructureOnline extends AbstractNotification
 {
     use attachmentNotificationTools;
 
@@ -56,9 +56,9 @@ class StructureWentHighPower  extends AbstractNotification
             
             $attachment->color('good')
             ->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
-            ->title('Structure Went High Power')
+            ->title('Structure Online')
             ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
-            ->content("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) went to full power mode.")
+            ->content("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is now online.")
             ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
         });
     }
