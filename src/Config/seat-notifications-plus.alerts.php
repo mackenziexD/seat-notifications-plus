@@ -132,5 +132,11 @@ return [
         'handlers' => [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\StructureOnline::class
         ],
+    ],
+    'MoonminingLaserFired [N+]' => [
+        'label' => 'MoonminingLaserFired [N+]',
+        'handlers' => [
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingLaserFired::class
+        ],
     ]
 ];
