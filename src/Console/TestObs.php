@@ -33,12 +33,12 @@ class TestObs extends Command
         CharacterNotification::create([
             'character_id' => 94154296,
             'notification_id' => 1923730118,
-            'type' => 'StructureWentHighPower',
+            'type' => 'StructureOnline',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
             'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_read' => 0,
-            'text' => "solarsystemID: 30003235\nstructureID: &id001 1044596949033\nstructureShowInfoData:\n- showinfo\n- 35841\n- *id001\nstructureTypeID: 35841\n"
+            'text' => "requiresDeedTypeID: 56205.0\nsolarsystemID: 30002858\nstructureID: &id001 1044664744491\nstructureShowInfoData:\n- showinfo\n- 35836\n - *id001\nstructureTypeID: 35836\n"
         ]);
         $this->info('Notification created.');
     }
