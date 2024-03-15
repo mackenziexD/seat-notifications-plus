@@ -130,7 +130,7 @@ return [
     'StructureOnline [N+]' => [
         'label' => 'StructureOnline [N+]',
         'handlers' => [
-            'discord' => \Helious\SeatNotificationsPlus\Notifications\Towers\StructureOnline::class
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\StructureOnline::class
         ],
     ]
 ];

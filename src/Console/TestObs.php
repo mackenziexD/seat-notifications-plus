@@ -31,14 +31,14 @@ class TestObs extends Command
     public function handle()
     {
         CharacterNotification::create([
-            "character_id" => 94154296,
-            "notification_id" => 1000000919,
-            "type" => "EntosisCaptureStarted",
-            "sender_id" => 3001,
-            "sender_type" => "corporation",
+            'character_id' => 94154296,
+            'notification_id' => 1923730118,
+            'type' => 'StructureOnline',
+            'sender_id' => 1000137,
+            'sender_type' => 'corporation',
             'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
-            "text" => "solarSystemID: 30001821\nstructureTypeID: 32458\n",
-            "is_read" => false
+            'is_read' => 0,
+            'text' => "requiresDeedTypeID: 56205.0\nsolarsystemID: 30002858\nstructureID: &id001 1044664744491\nstructureShowInfoData:\n- showinfo\n- 35836\n - *id001\nstructureTypeID: 35836\n"
         ]);
         $this->info('Notification created.');
     }

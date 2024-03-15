@@ -40,12 +40,13 @@ class StructureOnline extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
+            $needs = invType::find($this->notification->text['requiresDeedTypeID']);
             
             $embed->color(DiscordMessage::SUCCESS);
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Online');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
-            $embed->description("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is now online.");
+            $embed->description("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is now online and requires a **{$needs->typeName}**.");
             $embed->timestamp($this->notification->timestamp);
         });
     }
