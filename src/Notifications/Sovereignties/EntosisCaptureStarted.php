@@ -52,7 +52,11 @@ class EntosisCaptureStarted  extends AbstractNotification
             $corpID = $this->notification->recipient->affiliation->corporation_id;
             $system = MapDenormalize::find($this->notification->text['solarSystemID']);
             $region = Region::find($system->regionID)->name;
-            $owner = SovereigntyMap::find($this->notification->text['solarSystemID']) ? SovereigntyMap::find($this->notification->text['solarSystemID'])->alliance->name : 'Unknown';
+
+            $alliance = SovereigntyMap::find($this->notification->text['solarSystemID'])->alliance;
+            $allianceId = $alliance ? (int) $alliance->entity_id : null;
+            $owner = $this->zKillBoardToDiscordLink('alliance', $allianceId, $alliance ? $alliance->name : '**Unknown**');
+            
             $type = InvType::find($this->notification->text['structureTypeID']);
             
             $attachment->color('warning');
