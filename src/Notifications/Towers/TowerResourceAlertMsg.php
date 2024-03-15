@@ -45,6 +45,8 @@ class TowerResourceAlertMsg extends AbstractDiscordNotification
 
     public function populateMessage(DiscordMessage $message, $notifiable)
     {
+        
+        $message->from('Upwell Consortium', '');
         $message->embed(function (DiscordEmbed $embed) {
             $corpName = $this->notification->recipient->affiliation->corporation->name;
             $corpID = $this->notification->recipient->affiliation->corporation_id;

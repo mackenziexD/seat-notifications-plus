@@ -225,6 +225,17 @@
         "text": "solarSystemID: 30000401\nstructureTypeID: 32458\n",
         "is_read": false,
         "is_sent": false
+    },
+    {
+        "character_id": 94154296,
+        "notification_id": 1000000919,
+        "type": "MoonminingLaserFired",
+        "sender_id": 3001,
+        "sender_type": "corporation",
+        "timestamp": "2019-11-18 20:00:00",
+        "text": "firedBy: 2115784309\nfiredByLink: <a href=\"showinfo:1386//2115784309\">CJ Kondur</a>\nmoonID: 40204351\noreVolumeByType:\n  45494: 8364045.526322877\n  45498: 10867302.250553984\n  45512: 4960061.982821797\nsolarSystemID: 30003222\nstructureID: 1038565229449\nstructureLink: <a href=\"showinfo:35835//1038565229449\">Q-ITV5 - A38 P4M3</a>\nstructureName: Dummy\nstructureTypeID: 35835\n",
+        "is_read": false,
+        "is_sent": false
     }
 
 ]
