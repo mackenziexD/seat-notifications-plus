@@ -55,7 +55,7 @@ class MoonminingLaserFired extends AbstractNotification
             $firedBy = $this->notification->text['firedBy'];
 
             $attachment->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
-            ->title('Moon Mining Extraction Started')
+            ->title('Moon Mining Drill Fired')
             ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
             ->content("The moon drill fitted to **{$structureName}** at {$planet->name} in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) has been fired by {$this->zKillBoardToDiscordLink('character',$firedBy,$firedByName)} and the moon is are ready to be harvested.")
             ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
