@@ -52,7 +52,7 @@ class StructureLostShields  extends AbstractNotification
             $region = Region::find($system->regionID)->name;
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
-            $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft']);
+            $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft'], $this->notification->timestamp);
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
             
             $attachment->color('danger')

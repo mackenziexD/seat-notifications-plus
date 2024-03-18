@@ -36,13 +36,13 @@ trait attachmentNotificationTools
      * LDAP to readable date/time format
      * @param  int  $ldap
      */
-    public function ldap2DateTime(int $ldap): string
+    public function ldap2DateTime($ldap, $baseTimestampStr)
     {
-        $baseTimestamp = time(); // Current Unix timestamp
-        $timeLeftInSeconds = $ldap / 10000000;
-        $Timestamp = $baseTimestamp + $timeLeftInSeconds;
-        $DateTime = gmdate("Y-m-d H:i:s", $Timestamp);
-        return $DateTime;
+        $timeDeltaInSeconds = $ldapTimeDelta / 10000000;
+        $baseTimestamp = strtotime($baseTimestampStr);
+        $eventTimestamp = $baseTimestamp + $timeDeltaInSeconds;
+        $eventDateTime = gmdate("Y-m-d H:i:s", $eventTimestamp);
+        return $eventDateTime;
     }
 
     public function ldapToDateTime($ldap)
