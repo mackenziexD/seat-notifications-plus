@@ -42,13 +42,12 @@ class StructureAnchoring extends AbstractDiscordNotification
             $structureData = UniverseStructure::find($this->notification->text['structureID']);
             $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
-            $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft'], $this->notification->timestamp);
             
             $embed->color(DiscordMessage::INFO);
             $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->title('Structure Anchoring Started');
-            $embed->description("The {$type->typeName} **{$structureName}** has started anchoring in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}). It will be anchored at **{$timeLeft}**.");
+            $embed->description("The {$type->typeName} **{$structureName}** has started anchoring in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}).");
             $embed->timestamp($this->notification->timestamp);
         });
     }
