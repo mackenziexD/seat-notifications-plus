@@ -45,7 +45,7 @@ class StructureLostShields extends AbstractDiscordNotification
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
             
             $embed->color(DiscordMessage::ERROR);
-           $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
+            $embed->author($corpName, 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128');
             $embed->title('Structure Lost Shield');
             $embed->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128');
             $embed->description("The {$type->typeName} **{$structureName}** in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) has lost its shields. Armor timer end at: **{$timeLeft}**.");

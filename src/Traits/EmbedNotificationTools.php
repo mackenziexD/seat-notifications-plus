@@ -38,7 +38,7 @@ trait EmbedNotificationTools
      */
     public function ldap2DateTime($ldap, $baseTimestampStr)
     {
-        $timeDeltaInSeconds = $ldapTimeDelta / 10000000;
+        $timeDeltaInSeconds = $ldap / 10000000;
         $baseTimestamp = strtotime($baseTimestampStr);
         $eventTimestamp = $baseTimestamp + $timeDeltaInSeconds;
         $eventDateTime = gmdate("Y-m-d H:i:s", $eventTimestamp);
@@ -90,6 +90,20 @@ trait EmbedNotificationTools
                 return 'Outpost';
             default:
                 return 'Unknown';
+        }
+    }
+
+    public function campaignEventTypeIcon(int $type): string
+    {
+        switch ($type) {
+            case 1:
+                return 'https://images.evetech.net/types/32226/icon?size=128';
+            case 2:
+                return 'https://images.evetech.net/types/32458/icon?size=128';
+            case 3:
+                return 'https://images.evetech.net/types/12242/icon?size=128';
+            default:
+                return 'https://images.evetech.net/types/0/icon?size=128';
         }
     }
 }
