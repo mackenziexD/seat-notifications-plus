@@ -59,7 +59,7 @@ class StructureAnchoring extends AbstractNotification
             $attachment->author($corpName, '', 'https://images.evetech.net/corporations/'.$corpID.'/logo?size=128')
             ->thumb('https://images.evetech.net/types/'.$type->typeID.'/icon?size=128')
             ->title('Structure Anchoring Started')
-            ->content("The {$type->typeName} **{$structureName}** has started anchoring in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}).")
+            ->content("The {$type->typeName} **{$structureName}** has started anchoring in {$this->zKillBoardToDiscordLink('system',$system->itemID,$system->itemName)} ({$region}) is now online and requires a core..")
             ->timestamp(Carbon::createFromFormat('Y-m-d H:i:s', $this->notification->timestamp));
         });
     }
