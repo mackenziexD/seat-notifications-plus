@@ -16,7 +16,8 @@ class SeatNotificationsPlusInitialDeployment extends Migration
         Schema::create('seat_notifications_plus', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('corporation_id');
-            $table->dateTime('most_recent_notification');
+            $table->BigInteger('notification_id')->unique();
+            $table->dateTime('timestamp');
             $table->timestamps();
         });
     }
