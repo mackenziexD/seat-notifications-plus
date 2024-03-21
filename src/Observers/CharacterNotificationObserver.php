@@ -13,26 +13,27 @@ class CharacterNotificationObserver
 
     public function created(CharacterNotification $notification)
     {
-        \Log::error('Notification created');
-
+        \Log::info('Notification created'); // Consider using \Log::info or \Log::debug for non-error logs.
+    
         $corporationId = $notification->recipient->affiliation->corporation_id;
-        // Attempt to retrieve the most recent notification for the corporation
-        $mostRecentSeatNotification = SeatNotificationsPlus::where('corporation_id', $corporationId)
-            ->latest('notification_id')
-            ->first();
+    
+        // Check if the notification ID already exists
+        $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
+                                         ->where('notification_id', $notification->notification_id)
+                                         ->exists();
+    
+        // Determine if the notification is less than 10 minutes old from now
+        $isRecent = now()->diffInMinutes($notification->timestamp) < 10;
+    
+        // If the notification doesn't exist and it's recent, create and dispatch it
+        if (!$exists && $isRecent) {
+            
+            SeatNotificationsPlus::create([
+                'corporation_id' => $corporationId,
+                'notification_id' => $notification->notification_id, 
+                'timestamp' => $notification->timestamp
+            ]);
 
-        // Determine if the current notification is new
-        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->notification_id !== $mostRecentSeatNotification->notification_id;
-
-        // If there is no record or if the current notification is newer, update or create the record
-        if ($isNewNotification) {
-            SeatNotificationsPlus::updateOrCreate(
-                ['corporation_id' => $corporationId],
-                [
-                    'notification_id' => $notification->notification_id, 
-                    'timestamp' => $notification->timestamp
-                ]
-            );
             $this->dispatch($notification);
         }
     }

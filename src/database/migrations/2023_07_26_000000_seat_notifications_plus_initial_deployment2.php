@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SeatNotificationsPlusInitialDeployment extends Migration
+class SeatNotificationsPlusInitialDeployment2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class SeatNotificationsPlusInitialDeployment extends Migration
      */
     public function up()
     {
-        Schema::create('seat_notifications_plus', function (Blueprint $table) {
+        Schema::create('seat_notifications_plus_notifcations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('corporation_id');
             $table->BigInteger('notification_id')->unique();
@@ -29,6 +29,6 @@ class SeatNotificationsPlusInitialDeployment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seat_notifications_plus');
+        Schema::dropIfExists('seat_notifications_plus_notifcations');
     }
 }
