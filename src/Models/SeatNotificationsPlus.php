@@ -10,7 +10,8 @@ class SeatNotificationsPlus extends Model
 
     protected $fillable = [
         'corporation_id',
-        'most_recent_notification'
+        'notification_id',
+        'timestamp'
     ];
 
     
