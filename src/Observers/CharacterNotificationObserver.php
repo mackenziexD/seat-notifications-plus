@@ -10,30 +10,30 @@ use Helious\SeatNotificationsPlus\Models\SeatNotificationsPlus;
 
 class CharacterNotificationObserver
 {
-
     public function created(CharacterNotification $notification)
     {
-        \Log::error('Notification created');
-
+        \Log::info('Notification created'); // Consider using \Log::info or \Log::debug for non-error logs.
+    
         $corporationId = $notification->recipient->affiliation->corporation_id;
-        
-        $mostRecentSeatNotification = SeatNotificationsPlus::where('corporation_id', $corporationId)
-            ->latest('most_recent_notification')
-            ->first();
+    
+        // Check if the notification ID already exists
+        $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
+            ->where('notification_id', $notification->notification_id)
+            ->exists();
+    
+        // Determine if the notification is less than 10 minutes old from now
+        $isRecent = now()->diffInMinutes($notification->timestamp) < 10;
+    
+        // If the notification doesn't exist and it's recent, create and dispatch it
+        if (!$exists && $isRecent) {
+            
+            SeatNotificationsPlus::create([
+                'corporation_id' => $corporationId,
+                'notification_id' => $notification->notification_id, 
+                'timestamp' => $notification->timestamp
+            ]);
 
-        $isNewNotification = is_null($mostRecentSeatNotification) || $notification->timestamp > $mostRecentSeatNotification->most_recent_notification;
-
-        // If there is no record or if the current notification is newer, update or create the record
-        if ($isNewNotification) {
-            SeatNotificationsPlus::updateOrCreate(
-                ['corporation_id' => $corporationId],
-                ['most_recent_notification' => $notification->timestamp]
-            );
             $this->dispatch($notification);
-        } else {
-            \Log::error($notification->timestamp .$mostRecentSeatNotification->most_recent_notification);
-            \Log::error('Notification is not new, not dispatching');
-            return;
         }
     }
 

@@ -1,7 +1,7 @@
 [
     {
         "character_id": 94154296,
-        "notification_id": 1000000403,
+        "notification_id": 1000000001,
         "type": "MoonminingExtractionFinished",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -11,7 +11,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000404,
+        "notification_id": 1000000002,
         "type": "MoonminingExtractionStarted",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -21,17 +21,17 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000501,
+        "notification_id": 1000000003,
         "type": "StructureAnchoring",
         "sender_id": 2901,
         "sender_type": "corporation",
         "timestamp": "2019-10-16 20:36:00",
-        "text": "ownerCorpLinkData:\n- showinfo\n- 2\n- 2001\nownerCorpName: Wayne Technologies\nsolarsystemID: 30000401\nstructureID: &id001 1000000000001\nstructureShowInfoData:\n- showinfo\n- 35832\n- *id001\nstructureTypeID: 35832\ntimeLeft: 8993554150\nvulnerableTime: 9000000000\n",
+        "text": "ownerCorpLinkData:\n- showinfo\n- 2\n- 2001\nownerCorpName: Wayne Technologies\nsolarsystemID: 30000401\nstructureID: &id001 1000000000001\nstructureShowInfoData:\n- showinfo\n- 35832\n- *id001\nstructureTypeID: 35832\ntimeLeft: 8991504619\nvulnerableTime: 9000000000\n",
         "is_read": false
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000506,
+        "notification_id": 1000000004,
         "type": "StructureOnline",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -41,7 +41,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000510,
+        "notification_id": 1000000005,
         "type": "StructureWentHighPower",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -51,7 +51,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000503,
+        "notification_id": 1000000006,
         "type": "StructureFuelAlert",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -61,7 +61,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000509,
+        "notification_id": 1000000007,
         "type": "StructureUnderAttack",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -70,7 +70,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000505,
+        "notification_id": 1000000008,
         "type": "StructureLostShields",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -79,7 +79,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000504,
+        "notification_id": 1000000009,
         "type": "StructureLostArmor",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -88,7 +88,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000511,
+        "notification_id": 1000000010,
         "type": "StructureWentLowPower",
         "sender_id": 2901,
         "sender_type": "other",
@@ -98,7 +98,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000507,
+        "notification_id": 1000000011,
         "type": "StructureServicesOffline",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -107,7 +107,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000502,
+        "notification_id": 100000002,
         "type": "StructureDestroyed",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -116,7 +116,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000508,
+        "notification_id": 1000000013,
         "type": "StructureUnanchoring",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -125,7 +125,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000513,
+        "notification_id": 1000000014,
         "type": "OwnershipTransferred",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -135,7 +135,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000601,
+        "notification_id": 1000000015,
         "type": "OrbitalAttacked",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -145,7 +145,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000701,
+        "notification_id": 1000000016,
         "type": "TowerAlertMsg",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -155,7 +155,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000702,
+        "notification_id": 1000000017,
         "type": "TowerResourceAlertMsg",
         "sender_id": 2901,
         "sender_type": "corporation",
@@ -165,7 +165,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000802,
+        "notification_id": 1000000018,
         "type": "SovCommandNodeEventStarted",
         "sender_id": 3001,
         "sender_type": "alliance",
@@ -175,17 +175,17 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000804,
+        "notification_id": 1000000019,
         "type": "SovStructureReinforced",
         "sender_id": 3001,
         "sender_type": "alliance",
         "timestamp": "2018-12-18 19:28:00",
-        "text": "campaignEventType: 1\ndecloakTime: 131897990021334067\nsolarSystemID: 30000401\n",
+        "text": "campaignEventType: 1\ndecloakTime: 133547155568607490\nsolarSystemID: 30000401\n",
         "is_read": true
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000805,
+        "notification_id": 1000000020,
         "type": "SovStructureDestroyed",
         "sender_id": 3001,
         "sender_type": "alliance",
@@ -195,7 +195,7 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000919,
+        "notification_id": 1000000021,
         "type": "AllAnchoringMsg",
         "sender_id": 3001,
         "sender_type": "corporation",
@@ -206,12 +206,34 @@
     },
     {
         "character_id": 94154296,
-        "notification_id": 1000000919,
+        "notification_id": 1000000022,
         "type": "StructureOnline",
         "sender_id": 3001,
         "sender_type": "corporation",
         "timestamp": "2019-11-18 20:00:00",
         "text": "requiresDeedTypeID: 56205.0\nsolarsystemID: 30002858\nstructureID: &id001 1044664744491\nstructureShowInfoData:\n- showinfo\n- 35836\n - *id001\nstructureTypeID: 35836\n",
+        "is_read": false,
+        "is_sent": false
+    },
+    {
+        "character_id": 94154296,
+        "notification_id": 1000000023,
+        "type": "EntosisCaptureStarted",
+        "sender_id": 3001,
+        "sender_type": "corporation",
+        "timestamp": "2019-11-18 20:00:00",
+        "text": "solarSystemID: 30000401\nstructureTypeID: 32458\n",
+        "is_read": false,
+        "is_sent": false
+    },
+    {
+        "character_id": 94154296,
+        "notification_id": 1000000024,
+        "type": "MoonminingLaserFired",
+        "sender_id": 3001,
+        "sender_type": "corporation",
+        "timestamp": "2019-11-18 20:00:00",
+        "text": "firedBy: 2115784309\nfiredByLink: <a href=\"showinfo:1386//2115784309\">CJ Kondur</a>\nmoonID: 40204351\noreVolumeByType:\n  45494: 8364045.526322877\n  45498: 10867302.250553984\n  45512: 4960061.982821797\nsolarSystemID: 30003222\nstructureID: 1038565229449\nstructureLink: <a href=\"showinfo:35835//1038565229449\">Q-ITV5 - A38 P4M3</a>\nstructureName: Dummy\nstructureTypeID: 35835\n",
         "is_read": false,
         "is_sent": false
     }
