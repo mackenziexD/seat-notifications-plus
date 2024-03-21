@@ -38,7 +38,7 @@ trait attachmentNotificationTools
      */
     public function ldap2DateTime($ldap, $baseTimestampStr)
     {
-        $timeDeltaInSeconds = $ldapTimeDelta / 10000000;
+        $timeDeltaInSeconds = $ldap / 10000000;
         $baseTimestamp = strtotime($baseTimestampStr);
         $eventTimestamp = $baseTimestamp + $timeDeltaInSeconds;
         $eventDateTime = gmdate("Y-m-d H:i:s", $eventTimestamp);
