@@ -22,7 +22,7 @@ class CharacterNotificationObserver
             ->exists();
     
         // Determine if the notification is less than 10 minutes old from now
-        $isRecent = now()->diffInMinutes($notification->timestamp) < 10;
+        $isRecent = now()->diffInMinutes($notification->timestamp) < 30;
     
         // If the notification doesn't exist and it's recent, create and dispatch it
         if (!$exists && $isRecent) {
