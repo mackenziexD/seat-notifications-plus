@@ -138,5 +138,12 @@ return [
         'handlers' => [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Structures\MoonminingLaserFired::class
         ],
-    ]
+    ],
+    'SkyhookUnderAttack [N+]' => [
+        'label' => 'SkyhookUnderAttack [N+]',
+        'handlers' => [
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\unknownnotificationtype283::class
+        ],
+    ],
+
 ];
