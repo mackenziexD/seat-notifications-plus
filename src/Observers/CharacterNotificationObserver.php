@@ -19,8 +19,8 @@ class CharacterNotificationObserver
     
         // Check if the notification ID already exists
         $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
-                                         ->where('notification_id', $notification->notification_id)
-                                         ->exists();
+            ->where('notification_id', $notification->notification_id)
+            ->exists();
     
         // Determine if the notification is less than 10 minutes old from now
         $isRecent = now()->diffInMinutes($notification->timestamp) < 30;
