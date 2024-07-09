@@ -29,8 +29,8 @@ class TestObs extends Command
     public function handle()
     {
         CharacterNotification::create([
-            'character_id' => 2114464253,
-            'notification_id' => 1993510159,
+            'character_id' => 94154296,
+            'notification_id' => 192373011233,
             'type' => 'unknown notification type (283)',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',

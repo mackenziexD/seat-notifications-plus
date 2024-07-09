@@ -35,6 +35,8 @@ class CharacterNotificationObserver
             ]);
 
             $this->dispatch($notification);
+        } else {
+            \Log::error("Already exists.");
         }
     }
 
@@ -58,6 +60,8 @@ class CharacterNotificationObserver
             \Log::error($notificationClass);
             return (new $notificationClass($notification))->onQueue('high');
         });
+
+        \Log::error('cant find: '. $notification->type . ' [N+]');
     }
     
 }

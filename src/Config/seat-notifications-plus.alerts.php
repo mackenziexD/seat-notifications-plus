@@ -142,7 +142,13 @@ return [
     'SkyhookUnderAttack [N+]' => [
         'label' => 'SkyhookUnderAttack [N+]',
         'handlers' => [
-            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\unknownnotificationtype283::class
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookUnderAttack::class
+        ],
+    ],
+    'unknown notification type (283) [N+]' => [
+        'label' => 'unknown notification type (283) [N+]',
+        'handlers' => [
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookUnderAttack::class
         ],
     ],
 
