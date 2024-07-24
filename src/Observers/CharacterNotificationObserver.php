@@ -13,19 +13,15 @@ class CharacterNotificationObserver
 
     public function created(CharacterNotification $notification)
     {
-        \Log::info('Notification created'); // Consider using \Log::info or \Log::debug for non-error logs.
     
         $corporationId = $notification->recipient->affiliation->corporation_id;
     
-        // Check if the notification ID already exists
         $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
             ->where('notification_id', $notification->notification_id)
             ->exists();
     
-        // Determine if the notification is less than 10 minutes old from now
         $isRecent = now()->diffInMinutes($notification->timestamp) < 30;
     
-        // If the notification doesn't exist and it's recent, create and dispatch it
         if (!$exists && $isRecent) {
             
             SeatNotificationsPlus::create([
@@ -36,7 +32,7 @@ class CharacterNotificationObserver
 
             $this->dispatch($notification);
         } else {
-            \Log::error("Already exists.");
+            \Log::error("Notification ID:" . $notification->notification_id . " already exists in SeatNotificationsPlus.");
         }
     }
 
@@ -57,11 +53,10 @@ class CharacterNotificationObserver
 
         // Proceed with dispatching the notifications
         $this->dispatchNotifications($notification->type . ' [N+]', $groups, function ($notificationClass) use ($notification) {
-            \Log::error($notificationClass);
             return (new $notificationClass($notification))->onQueue('high');
         });
 
-        \Log::error('cant find: '. $notification->type . ' [N+]');
+        \Log::error($notification->type . " [N+] is not part of any notifcation groups.");
     }
     
 }
