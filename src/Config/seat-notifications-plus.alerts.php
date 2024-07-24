@@ -145,10 +145,10 @@ return [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookUnderAttack::class
         ],
     ],
-    'unknown notification type (283) [N+]' => [
-        'label' => 'unknown notification type (283) [N+]',
+    'SkyhookLostShields [N+]' => [
+        'label' => 'SkyhookLostShields [N+]',
         'handlers' => [
-            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookUnderAttack::class
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookLostShields::class
         ],
     ],
 

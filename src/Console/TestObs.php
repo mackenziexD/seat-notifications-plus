@@ -30,13 +30,13 @@ class TestObs extends Command
     {
         CharacterNotification::create([
             'character_id' => 94154296,
-            'notification_id' => 192373011233,
-            'type' => 'unknown notification type (283)',
+            'notification_id' => 20035785711,
+            'type' => 'SkyhookLostShields',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
             'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_read' => true,
-            'text' => "allianceID: 99005338\nallianceLinkData:\n- showinfo\n- 16159\n- 99005338\nallianceName: Pandemic Horde\narmorPercentage: 100.0\ncharID: 2114464253\ncorpLinkData:\n- showinfo\n- 2\n- 2014367342\ncorpName: Blackwater USA Inc.\nhullPercentage: 100.0\nisActive: true\nitemID: &id001 1045848302693\nplanetID: 40206108\nplanetShowInfoData:\n- showinfo\n- 2015\n- 40206108\nshieldPercentage: 94.92754468794297\nskyhookShowInfoData:\n- showinfo\n- 81080\n- *id001\nsolarsystemID: 30003249\ntypeID: 81080\n"
+            'text' => "itemID: &id001 1045899550916\nplanetID: 40180016\nplanetShowInfoData:\n- showinfo\n- 2015\n- 40180016\nskyhookShowInfoData:\n- showinfo\n- 81080\n- id001\nsolarsystemID: 30002839\ntimeLeft: 1824005934062\ntimestamp: 133664381960000000\ntypeID: 81080\nvulnerableTime: 9000000000\n"
         ]);
         $this->info('Notification created.');
     }
