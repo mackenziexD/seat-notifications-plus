@@ -40,8 +40,6 @@ class SkyhookLostShields extends AbstractDiscordNotification
             $region = Region::find($system->regionID)->name;
             $type = InvType::find($this->notification->text['typeID']);
             $planet = MapDenormalize::find($this->notification->text['planetID']);
-            $structureData = UniverseStructure::find($this->notification->text['structureID']);
-            $structureName = $structureData ? $structureData->name : 'Unknown Structure';
             $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft'], $this->notification->timestamp);
             $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
 
