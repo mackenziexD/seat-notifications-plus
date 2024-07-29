@@ -40,7 +40,6 @@ class SkyhookLostShields extends AbstractDiscordNotification
             $type = InvType::find($this->notification->text['typeID']);
             $planet = MapDenormalize::find($this->notification->text['planetID']);
             $timeLeft = $this->ldap2DateTime($this->notification->text['timeLeft'], $this->notification->timestamp);
-            $type = InvType::find($this->notification->text['structureShowInfoData'][1]);
 
             $embed->color(DiscordMessage::ERROR);
             $embed->author($corpName, 'https://images.evetech.net/corporations/' . $corpID . '/logo?size=128');

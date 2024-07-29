@@ -56,6 +56,8 @@ class CharacterNotificationObserver
             return (new $notificationClass($notification))->onQueue('high');
         });
 
+        \Log::error($groups);
+
         \Log::error($notification->type . " [N+] is not part of any notifcation groups.");
     }
     

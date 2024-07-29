@@ -30,7 +30,7 @@ class TestObs extends Command
     {
         CharacterNotification::create([
             'character_id' => 94154296,
-            'notification_id' => 20035785712,
+            'notification_id' => 20035785717,
             'type' => 'SkyhookLostShields',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
