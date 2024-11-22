@@ -151,5 +151,11 @@ return [
             'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\SkyhookLostShields::class
         ],
     ],
+    'MercenaryDenReinforced [N+]' => [
+        'label' => 'MercenaryDenReinforced [N+]',
+        'handlers' => [
+            'discord' => \Helious\SeatNotificationsPlus\Notifications\Orbitals\MercenaryDenReinforced::class
+        ],
+    ],
 
 ];

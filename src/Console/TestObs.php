@@ -30,13 +30,13 @@ class TestObs extends Command
     {
         CharacterNotification::create([
             'character_id' => 94154296,
-            'notification_id' => 20035785717,
-            'type' => 'SkyhookLostShields',
+            'notification_id' => 200357857171,
+            'type' => 'MercenaryDenReinforced',
             'sender_id' => 1000137,
             'sender_type' => 'corporation',
             'timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_read' => true,
-            'text' => "itemID: &id001 1045899550916\nplanetID: 40180016\nplanetShowInfoData:\n- showinfo\n- 2015\n- 40180016\nskyhookShowInfoData:\n- showinfo\n- 81080\n- id001\nsolarsystemID: 30002839\ntimeLeft: 1824005934062\ntimestamp: 133664381960000000\ntypeID: 81080\nvulnerableTime: 9000000000\n"
+            'text' => "aggressorAllianceName: <a href=\"showinfo:16159//99011223\">Sigma Grindset</a>\naggressorCharacterID: 92245397\naggressorCorporationName: <a href=\"showinfo:2//98637264\">Sensible People</a>\nitemID: &id001 1047221349878\nmercenaryDenShowInfoData:\n- showinfo\n- 85230\n- *id001\nplanetID: 40206041\nplanetShowInfoData:\n- showinfo\n- 11\n- 40206041\nsolarsystemID: 30003247\ntimestampEntered: 133763522581585101\ntimestampExited: 133764277671585101\ntypeID: 85230\n"
         ]);
         $this->info('Notification created.');
     }

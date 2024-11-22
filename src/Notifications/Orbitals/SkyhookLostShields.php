@@ -14,10 +14,6 @@ use Seat\Eveapi\Models\Sde\MapDenormalize;
 use Seat\Eveapi\Models\Universe\UniverseName;
 use Seat\Eveapi\Models\Sde\Region;
 
-/**
- * Class SkyhookLostShields.
- *
- */
 class SkyhookLostShields extends AbstractDiscordNotification
 {
     use EmbedNotificationTools;
