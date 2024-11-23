@@ -13,8 +13,8 @@ class CharacterNotificationObserver
 
     public function created(CharacterNotification $notification)
     {
-    
         $corporationId = $notification->recipient->affiliation->corporation_id;
+        \Log::info($corporationId);
     
         $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
             ->where('notification_id', $notification->notification_id)
@@ -31,8 +31,6 @@ class CharacterNotificationObserver
             ]);
 
             $this->dispatch($notification);
-        } else {
-            \Log::error("Notification ID:" . $notification->notification_id . " already exists in SeatNotificationsPlus.");
         }
     }
 
@@ -50,13 +48,14 @@ class CharacterNotificationObserver
                 $query->where('affiliation_id', $notification->character_id);
                 $query->orWhere('affiliation_id', $notification->recipient->affiliation->corporation_id);
             })->get();
+        
 
+        \Log::info($notification->recipient->affiliation->corporation_id);
+        \Log::info($groups);
         // Proceed with dispatching the notifications
         $this->dispatchNotifications($notification->type . ' [N+]', $groups, function ($notificationClass) use ($notification) {
             return (new $notificationClass($notification))->onQueue('high');
         });
-
-        \Log::error($groups);
 
         \Log::error($notification->type . " [N+] is not part of any notifcation groups.");
     }
