@@ -10,19 +10,22 @@ use Seat\Notifications\Traits\NotificationDispatchTool;
 class CharacterNotificationObserver
 {
     use NotificationDispatchTool;
+    
+    const EXPIRATION_DELAY = 3600;
 
     public function created(CharacterNotification $notification)
     {
         $corporationId = $notification->recipient->affiliation->corporation_id;
-        \Log::info($corporationId);
     
         $exists = SeatNotificationsPlus::where('corporation_id', $corporationId)
             ->where('notification_id', $notification->notification_id)
             ->exists();
     
-        $isRecent = now()->diffInMinutes($notification->timestamp) < 30;
+        // ignore any notification created since more than 60 minutes
+        if (carbon()->diffInSeconds($notification->timestamp) > self::EXPIRATION_DELAY)
+            return;
     
-        if (!$exists && $isRecent) {
+        if (!$exists) {
             
             SeatNotificationsPlus::create([
                 'corporation_id' => $corporationId,
@@ -41,6 +44,9 @@ class CharacterNotificationObserver
      */
     private function dispatch(CharacterNotification $notification)
     {
+        
+        
+
         $groups = NotificationGroup::with('alerts', 'affiliations')
             ->whereHas('alerts', function ($query) use ($notification) {
                 $query->where('alert', $notification->type . ' [N+]');
@@ -48,13 +54,9 @@ class CharacterNotificationObserver
                 $query->where('affiliation_id', $notification->character_id);
                 $query->orWhere('affiliation_id', $notification->recipient->affiliation->corporation_id);
             })->get();
-        
 
-        \Log::info($notification->recipient->affiliation->corporation_id);
-        \Log::info($groups);
-        // Proceed with dispatching the notifications
         $this->dispatchNotifications($notification->type . ' [N+]', $groups, function ($notificationClass) use ($notification) {
-            return (new $notificationClass($notification))->onQueue('high');
+            return new $notificationClass($notification);
         });
 
         \Log::error($notification->type . " [N+] is not part of any notifcation groups.");
